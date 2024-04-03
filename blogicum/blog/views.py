@@ -41,20 +41,14 @@ posts = [
                 укутывал их, чтобы не испортились от дождя.''',
     },
 ] 
-# Create your views here.
 
 def post_detail(request, id):
     template = 'blog/detail.html'
-    context = {'posts_list': posts[int(id)]}
+    context = {'post': posts[id]}
     return render(request, template, context)
 
 
-def posts_list(request):
-    template = 'index.html'
-    context = {'posts_list': posts}
-    return render(request, template, context)
-
-def category_posts(request):
-    template = 'category.html'
-    context = {'posts_list': posts}
+def category_posts(request, category_slug):
+    template = 'blog/category.html'
+    context = {'category_slug': category_slug}
     return render(request, template, context)
