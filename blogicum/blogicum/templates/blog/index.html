@@ -1,5 +1,27 @@
-<!DOCTYPE html> 
-<html lang="ru"> 
+{% extends "base.html" %}
+{% block title %}
+    Лента записей
+{% endblock %}
+{% block content %}
+  <h1>Главная страница</h1>
+{% endblock %}
+
+{% block title %}<h1>Лента записей</h1>{% endblock %}
+{% block content %}
+  <ul>
+    {% for post in ice_cream_list %}
+      <li>
+        <h3>{{ ice_cream.title }}</h3>
+        <p>{{ ice_cream.description|truncatewords:10 }}</p>
+        <a href="{% url 'ice_cream:ice_cream_detail' ice_cream.id %}">подробнее</a>
+      </li>
+      {% if not forloop.last %}
+        <hr>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  {% endblock %}
+
   <head>    
   
     <title>Лента записей</title>

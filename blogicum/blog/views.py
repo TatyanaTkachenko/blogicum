@@ -42,3 +42,19 @@ posts = [
     },
 ] 
 # Create your views here.
+
+def post_detail(request, id):
+    template = 'blog/detail.html'
+    context = {'posts_list': posts[int(id)]}
+    return render(request, template, context)
+
+
+def posts_list(request):
+    template = 'index.html'
+    context = {'posts_list': posts}
+    return render(request, template, context)
+
+def category_posts(request):
+    template = 'category.html'
+    context = {'posts_list': posts}
+    return render(request, template, context)
