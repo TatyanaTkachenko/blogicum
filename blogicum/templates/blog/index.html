@@ -3,29 +3,30 @@
     Лента записей
 {% endblock %}
 {% block content %}
-  <h1>Главная страница</h1>
-{% endblock %}
+
+
 <div class="container py-5">
-{% block title %}<h1>Лента записей</h1>{% endblock %}
-{% block content %}
+
+<h1>Лента записей</h1>
+
   
-    {% for post in posts %}
+    {% for post in reversed(posts) %}
     
-    <hr>
-    <article>
-      <ul>
-      <li>
-        Место: {{ post.location }}
-      </li>
-      <li>
-        Дата: {{ post.date }}
-      </li>
+        <hr>
+        <article>
+          <ul>
+          <li>
+            Место: {{ post.location }}
+          </li>
+          <li>
+             Дата: {{ post.date }}
+          </li>
       <li>
         Категория: <a href="{% url 'blog:category_posts' post.category %}">{{ post.date }}
         </li>
       </ul>       
         <p>{{ post.text|truncatewords:10 }}</p>
-        <a href="{% url 'blog:ice_post_detail' post.id %}">Читать полный текст</a>
+        <a href="{% url 'blog:post_detail' post.id %}">Читать полный текст</a>
     </article>
     {% endfor %}
 </article>
