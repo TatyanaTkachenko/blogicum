@@ -42,7 +42,8 @@ posts = [
                 Весь этот день я хлопотал  около вещей: укрывал и
                 укутывал их, чтобы не испортились от дождя.''',
     },
-] 
+]
+
 
 def post_detail(request, p_id):
     template = 'blog/detail.html'
