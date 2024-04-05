@@ -58,5 +58,5 @@ def category_posts(request, category_slug):
 
 def index(request):
     template = 'blog/index.html'
-    context = {'post_list': posts}
+    context = {'posts': posts}
     return render(request, template, context)
