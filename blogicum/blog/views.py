@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.http import Http404
 
 posts = [
     {
@@ -44,10 +44,17 @@ posts = [
     },
 ]
 
+dict_posts = {}
+for post in posts:
+    dict_posts[post['id']] = post
+
 
 def post_detail(request, id):
     template = 'blog/detail.html'
-    context = {'post': posts[id]}
+    try:
+        context = {'post': dict_posts[id]}
+    except KeyError:
+        raise Http404("Такой страницы не существует")
     return render(request, template, context)
 
 
@@ -59,5 +66,5 @@ def category_posts(request, category_slug):
 
 def index(request):
     template = 'blog/index.html'
-    context = {'posts': posts}
+    context = {'posts': posts[::-1]}
     return render(request, template, context)
