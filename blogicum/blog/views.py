@@ -45,9 +45,9 @@ posts = [
 ]
 
 
-def post_detail(request, p_id):
+def post_detail(request, id):
     template = 'blog/detail.html'
-    context = {'post': posts[p_id]}
+    context = {'post': posts[id]}
     return render(request, template, context)
 
 
