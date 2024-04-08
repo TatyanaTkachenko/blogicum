@@ -44,17 +44,15 @@ posts = [
     },
 ]
 
-dict_posts = {}
-for post in posts:
-    dict_posts[post['id']] = post
+POSTS_AND_ID = {post['id']: post for post in posts}
 
 
-def post_detail(request, id):
+def post_detail(request, post_id):
     template = 'blog/detail.html'
     try:
-        context = {'post': dict_posts[id]}
+        context = {'post': POSTS_AND_ID[post_id]}
     except KeyError:
-        raise Http404("Поста с таким номером не существует")
+        raise Http404("Такой страницы не существует")
     return render(request, template, context)
 
 
