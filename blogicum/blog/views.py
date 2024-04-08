@@ -54,7 +54,7 @@ def post_detail(request, id):
     try:
         context = {'post': dict_posts[id]}
     except KeyError:
-        raise Http404("Такой страницы не существует")
+        raise Http404("Поста с таким номером не существует")
     return render(request, template, context)
 
 
